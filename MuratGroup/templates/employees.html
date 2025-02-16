@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Компания xodimlari haqida ma’lumot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #283593;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header img {
+            max-width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        nav {
+            background-color: #3949ab;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #5c6bc0;
+            color: white;
+        }
+        .container {
+            width: 80%;
+            margin: 80px auto 20px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .employees {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .employee {
+            flex: 1 0 21%;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .employee img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgIonqLtI9FRdrp7T-AONZEbRSCBRVuyWDTcne9ieQ0A&s" alt="Murat Group Logo">
+        <h1>Murat Group</h1>
+    </header>
+    <nav>
+        <a href="{% url 'main' %}">Компания ish faoliyati</a>
+        <a href="{% url 'employees' %}">Компания xodimlari haqida ma’lumot</a>
+        <a href="{% url 'contact' %}">Компания bilan aloqa</a>
+    </nav>
+    <div class="container">
+
+        <main>
+            {% for employee in employees %}
+            <section>
+                <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
+                <h2>{{ employee.first_name }} {{ employee.last_name }}</h2>
+                <p>{{ employee.position }}</p>
+            </section>
+            {% endfor %}
+        </main>
+        
+    </div>
+</body>
+</html>
